@@ -7,7 +7,7 @@ const passport = require('passport');
 const Email = require('./models/email.js');
 const User = require('./models/user.js');
 const cron = require('node-cron');
-const dotenv = require('dotenv');
+require('dotenv').config()
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 // Configure OpenAI
