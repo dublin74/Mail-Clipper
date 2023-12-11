@@ -7,7 +7,9 @@ const passport = require('passport');
 const Email = require('./models/email.js');
 const User = require('./models/user.js');
 const cron = require('node-cron');
+const dotenv = require('dotenv');
 
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 // Configure OpenAI
 const OpenAI = require('openai');
 const openai = new OpenAI();
@@ -33,7 +35,7 @@ app.use(
 
 // Connect to MongoDB
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://localhost:27017/email', {
+mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
