@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MailClipper Login</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: #e1e8ed;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .login-container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      color: #2d3a45;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 30px;
+      color: #555;
+      font-weight: 400;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .google-btn {
+      background-color: #ea4335;
+      color: #fff;
+    }
+
+    .google-btn:hover {
+      background-color: #d52d23;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Mail Clipper Login</h1>
+    <p>Access your account</p>
+    <form action="/auth/google" method="GET">
+      <button class="google-btn">Sign In with Google</button>
+    </form>
+  </div>
+</body>
+</html>

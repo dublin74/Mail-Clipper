@@ -1,0 +1,185 @@
+body {
+  background-color: #f1f3f4;
+  font-family: Arial, sans-serif;
+}
+
+.email-card {
+  background-color: #ffffff;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  max-width: 1200px;
+  position: relative;
+}
+
+.email-header h2 {
+  color: #202124;
+  margin-bottom: 10px;
+}
+
+.email-info span {
+  display: block;
+  color: #5f6368;
+  margin-bottom: 5px;
+}
+
+.email-body p {
+  color: #5f6368;
+  margin-bottom: 10px;
+}
+
+.email-footer {
+  text-align: center;
+}
+
+.email-card button {
+  background-color: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.email-card button:hover {
+  background-color: #0052cc;
+}
+
+.email-card.urgent {
+  background-color: #ff6347; 
+}
+
+.email-card.moderate {
+  background-color: #FFA000; 
+}
+
+.email-card.routine {
+  background-color: #f0e68c; 
+}
+
+.email-card.ignore {
+  background-color: #f8f8f8; 
+}
+
+
+#filter-container {
+  position: fixed; 
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 98%; 
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #eaeaea;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 60px;
+}
+
+#title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333; 
+  margin-right: auto;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.filter-controls label {
+  font-size: 16px;
+  color: #333333; 
+}
+
+
+.filter-controls select, #dateFilter {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  transition: all 0.3s ease; 
+}
+
+.filter-controls select:hover, #dateFilter:hover {
+  border-color: #007bff; 
+  background-color: #f0f0f0; 
+}
+
+.filter-controls select:focus, #dateFilter:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
+.signout-button {
+  background-color: #dc3545; 
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signout-button {
+  background-color: #c82333; 
+}
+
+
+.refresh-button {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: #388E3C; 
+}
+
+
+.email-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.email-tag.urgent {
+  background-color: #c0392b; 
+}
+
+.email-tag.moderate {
+  background-color: #e67e22; 
+}
+
+.email-tag.routine {
+  background-color: #bdc3c7; 
+  color: #333333; 
+}
+
+.email-tag.ignore {
+  background-color: #7f8c8d; 
+  color: #ffffff; 
+}

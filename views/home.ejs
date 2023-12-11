@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emails</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div id="filter-container">
+    <div id="title">Mail Clipper</div>
+    <div class="filter-controls">
+      <button class="refresh-button" onclick="location.href='/refresh'" >Refresh</button>
+      <label for="filter">Filter by:</label>
+      <select id="filter" onchange="filterEmails(this.value)">
+        <option value="all">All</option>
+        <option value="urgent" >Urgent</option>
+        <option value="moderate" >Moderate</option>
+        <option value="routine" >Routine</option>
+        <option value="ignore" >Ignore</option>
+      </select>
+      <label for="dateFilter">Date:</label>
+      <input type="date" id="dateFilter" onchange="filterEmailsByDate(this.value)">
+
+      <button class="signout-button" onclick="location.href='/signout'">Sign Out</button>
+    </div>
+  </div>
+
+  <div id="navbar-placeholder" style="height: 60px;"></div>
+
+  <div id="emails">
+    <% emails.forEach((email) => { %>
+      <div class="email-card <%= determineClass(email.summary.severity, email.summary.sentiment) %>" data-email-date="<%= email.date %>">
+        <div class="email-tag <%= determineClass(email.summary.severity, email.summary.sentiment) %>">
+          <%= determineClass(email.summary.severity, email.summary.sentiment) %>
+        </div>
+        <div class="email-header">
+          <h2><%= email.subject %></h2>
+          <div class="email-info">
+            <span><strong>From:</strong> <%= email.from %></span>
+            <span><strong>Date:</strong> <%= email.date.toLocaleDateString() %> <strong>Time:</strong> <%= email.time %></span>
+          </div>
+        </div>
+        <div class="email-body">
+          <!-- <p><strong>Severity:</strong> <%= email.summary.severity %> <strong>Sentiment:</strong> <%= email.summary.sentiment %></p> -->
+          <p><strong>Summary:</strong> <%= email.summary.summary %></p>
+          <% if (email.summary.motive.length > 0) { %>
+            <p><strong>Motive:</strong> <%= email.summary.motive.join(", ") %></p>
+          <% } %>
+        </div>
+        <div class="email-footer">
+          <a href="https://mail.google.com/mail/u/0/#inbox/<%= email.id %>" target="_blank">
+            <button>Open in Gmail</button>
+          </a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <script>
+    function filterEmailsByDate(date) {
+    var emails = document.getElementsByClassName('email-card');
+    var selectedDate = new Date(date);
+
+    for (var i = 0; i < emails.length; i++) {
+      var emailDate = new Date(emails[i].getAttribute('data-email-date'));
+
+      
+      var formattedSelectedDate = selectedDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+      });
+      var formattedEmailDate = emailDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric'
+      });
+
+      if (date === 'all' || formattedEmailDate === formattedSelectedDate) {
+        emails[i].style.display = '';
+      } else {
+        emails[i].style.display = 'none';
+      }
+    }
+  }
+
+  function filterEmails(filter) {
+    var emails = document.getElementsByClassName('email-card');
+
+    for (var i = 0; i < emails.length; i++) {
+      if (filter === 'all' || emails[i].classList.contains(filter)) {
+        emails[i].style.display = '';
+      } else {
+        emails[i].style.display = 'none';
+      }
+    }
+  }
+
+  function sortEmailsByDate() {
+    var emailsContainer = document.getElementById('emails');
+    var emailCards = Array.from(emailsContainer.getElementsByClassName('email-card'));
+
+    emailCards.sort(function (a, b) {
+      var dateA = new Date(a.getAttribute('data-email-date'));
+      var dateB = new Date(b.getAttribute('data-email-date'));
+
+      return dateB - dateA;
+    });
+
+    emailCards.forEach(function (emailCard) {
+      emailsContainer.appendChild(emailCard);
+    });
+  }
+
+  function setDefaultDateAndFilter() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    var defaultDateString = yyyy + '-' + mm + '-' + dd;
+
+    document.getElementById('dateFilter').value = defaultDateString;
+
+    filterEmailsByDate(defaultDateString);
+    filterEmails(document.getElementById('filter').value);
+    sortEmailsByDate();
+  }
+  setDefaultDateAndFilter();
+  </script>
+</body>
+</html>
+
+
