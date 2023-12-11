@@ -69,14 +69,3 @@ After installation, you can access Mail Clipper in your web browser at ```http:/
 
 https://github.com/dublin74/Mail-Clipper/assets/89651266/081b32f4-ed0e-4b08-838e-01b303f6ebd5
 
-
-
-
-
-
-
-
-
-## Support
-
-If you encounter any problems or need assistance with Mail Clipper, please contact me at lakshyakhichar@gmail.com.
