@@ -47,7 +47,7 @@ MONGO_DB = "your-mongodb-connection-string"
 CLIENT_ID = "your-client-id-here"
 ClIENT_SECRET = "your-client-secret-here"
 
-OPENAI_API_KEY "your-api-key-here"
+OPENAI_API_KEY = "your-api-key-here"
 ```
 4. Start the server: ```node app.js```
 
